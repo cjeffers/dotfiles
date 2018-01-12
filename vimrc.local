@@ -1,6 +1,6 @@
 UnBundle 'justinmk/vim-sneak'
 color solarized
-set bg=light
+set bg=dark
 set nospell
 
 set guioptions-=r
@@ -10,3 +10,7 @@ if $VIM_CRONTAB == "true"
     set nobackup
     set nowritebackup
 endif
+
+" omnifunc/NeoComplete is slow
+setlocal omnifunc=
+let g_neocomplete#enable_at_startup = 0
