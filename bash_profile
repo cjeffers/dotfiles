@@ -138,4 +138,9 @@ if [ $(cat /proc/version | grep Microsoft | wc -l) -gt 0 ]; then
 
     # for easy cd-ing home
     export WH=/mnt/c/Users/CWJ
+
+    if [ ! -f $HOME/.ssh/id_rsa ]; then
+        # link ssh stuff
+        ln -s $WH/.ssh/* $HOME/.ssh/
+    fi
 fi
