@@ -1,0 +1,2 @@
+Bundle 'tmux-plugins/vim-tmux-focus-events'
+Bundle 'roxma/vim-tmux-clipboard'
