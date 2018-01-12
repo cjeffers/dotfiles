@@ -12,4 +12,4 @@
 	autocrlf = input
 	safecrlf = true
 [credential]
-	helper = !/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /home/cwj/.git-credential-manager/git-credential-manager-2.0.3.jar
+	helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe
