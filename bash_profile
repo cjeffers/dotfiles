@@ -1,6 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+source $HOME/.bashrc
 
 # If not running interactively, don't do anything
 case $- in
@@ -121,13 +122,18 @@ set -o vi
 bind -m vi-insert '"\C-l":clear-screen'
 
 # source virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
+VENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
+if [ -f $VENVWRAPPER ]; then
+    source $VENVWRAPPER
+fi
 
 # add script bin to PATH
 export PATH=$PATH:$HOME/Documents/dotfiles/bin
 
 # add java_home
-export JAVA_HOME=$(/usr/libexec/java_home)
+if [ -f /usr/libexec/java_home ]; then
+    export JAVA_HOME=$(/usr/libexec/java_home)
+fi
 
 # vi? no, vim
 export EDITOR=vim
@@ -137,10 +143,11 @@ if [ $(cat /proc/version | grep Microsoft | wc -l) -gt 0 ]; then
     export DOCKER_HOST="tcp://0.0.0.0:2375"
 
     # for easy cd-ing home
-    export WH=/mnt/c/Users/CWJ
+    export WH=/c/Users/CWJ
 
     if [ ! -f $HOME/.ssh/id_rsa ]; then
         # link ssh stuff
         ln -s $WH/.ssh/* $HOME/.ssh/
     fi
+
 fi
