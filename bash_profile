@@ -150,4 +150,6 @@ if [ $(cat /proc/version | grep Microsoft | wc -l) -gt 0 ]; then
         ln -s $WH/.ssh/* $HOME/.ssh/
     fi
 
+    # chrome for karma
+    export CHROME_BIN="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
 fi
