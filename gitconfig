@@ -1,15 +1,15 @@
 [user]
-	name = cjeffers
+	name = Cameron Jeffers
 	email = cjeffers@henselphelps.com
 [push]
 	default = simple
 [alias]
-    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(green)%s%C(reset) %C(bold red)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(green)%s%C(reset) %C(bold red)- %an%C(reset) %C(bold magenta)(%G?)%C(reset) %C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(green)%s%C(reset) %C(bold red)- %an%C(reset)' --all
     lg = !"git lg1"
 [core]
 	editor = vim
 	autocrlf = input
 	safecrlf = true
-[credential]
-	helper = !/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /home/cwj/.git-credential-manager/git-credential-manager-2.0.3.jar
+[commit]
+	gpgSign = true
