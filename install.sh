@@ -1,1 +1,1 @@
-ls | python make_links.py
+ls | python3 make_links.py
