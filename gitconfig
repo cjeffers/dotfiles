@@ -1,6 +1,7 @@
 [user]
 	name = Cameron Jeffers
 	email = cjeffers@henselphelps.com
+	signingkey = CACB1C98C0FF307A
 [push]
 	default = simple
 [alias]
@@ -11,3 +12,7 @@
 	editor = vim
 	autocrlf = input
 	safecrlf = true
+[commit]
+	gpgSign = true
+[gpg]
+	program = gpg

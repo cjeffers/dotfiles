@@ -177,3 +177,8 @@ if ! ss -a | grep -q "$GPG_AGENT_SOCK"; then
   fi
   unset wsl2_ssh_pageant_bin
 fi
+
+# kubectl
+source <(kubectl completion bash)
+alias kc='kubectl'
+complete -F __start_kubectl kc
