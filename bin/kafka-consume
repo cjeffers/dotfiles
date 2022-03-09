@@ -1,0 +1,23 @@
+#! /usr/bin/env bash
+TOPIC="$1"
+SCHEMA_REGISTRY_URL=http://localhost:1337
+if [ "$TOPIC" = "-h" ]; then
+    echo "Usage: kafka-consume <topic> <options> (see kafka-avro-console-consumer --help for option list)"
+    exit 1
+fi
+
+shift
+
+curl $SCHEMA_REGISTRY_URL > /dev/null 2>&1
+if [ "$?" -ne "0" ]; then
+    echo "Connecting to schema registry..." 1>&2
+    connect-schema-registry > /dev/null 2>&1 &
+fi
+
+echo "Consumeing $TOPIC..." 1>&2
+LOG_DIR=$HOME/.config/kafka/logs kafka-avro-console-consumer \
+    --bootstrap-server pkc-ld2de.us-west-2.aws.confluent.cloud:9092 \
+    --consumer.config "$HOME/.config/kafka/consumer.properties" \
+    --topic $TOPIC \
+    --property schema.registry.url="$SCHEMA_REGISTRY_URL" \
+    "$@"

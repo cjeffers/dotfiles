@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+
+APP=cp-schema-registry
+REMOTE_PORT=8081
+LOCAL_PORT=1337
+CONTEXT=hydra-isolated-stable-1-admin
+NAMESPACE=schema-registry
+POD_NAME=$(kubectl --context $CONTEXT --namespace $NAMESPACE get pods -l app=$APP --output json | 
+    jq -M '[.items[] | select(.status.phase == "Running")] | .[0].metadata.name' |
+    tr -d '"')
+
+kubectl --context $CONTEXT port-forward --namespace $NAMESPACE $POD_NAME $LOCAL_PORT:$REMOTE_PORT
